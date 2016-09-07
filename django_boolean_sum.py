@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.db.models.aggregates import Sum
-from django.db.models.sql.aggregates import Sum as BaseSQLSum
+try:
+    from django.db.models.sql.aggregates import Sum as BaseSQLSum
+except ImportError:
+    from django.db.models.aggregates import Sum as BaseSQLSum
 
 
 class SQLSum(BaseSQLSum):
